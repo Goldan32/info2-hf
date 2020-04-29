@@ -5,7 +5,7 @@
                 <h1 class="col-sm-4"><a href="mainpage.php">Staem</a></h1>
                 <nav class="col-sm-6">
                     <a href="">Games</a>
-                    <a href="">Players</a>
+                    <a href="playerlist.php">Players</a>
                     <a href="">Teams</a>
                     
                 </nav>

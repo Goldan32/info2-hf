@@ -74,10 +74,25 @@ header nav a:hover {
     color: #ffffffc2;
     background-color: #89ad06;
     border-color: #89ad06;
+    margin-bottom:15px;
   }
 
 .btn-mybutton:hover {
     color: #ffffff;
     background-color: #adc555;
     border-color: #adc555;
+    margin-bottom:15px;
+}
+
+.table {
+    background-color:#101822;
+    
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #192635;
+}
+
+#bigname {
+    margin-top:40px;
 }

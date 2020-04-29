@@ -48,7 +48,7 @@
                             }
                             
                             if(validatepw($link,$_POST["IGN"],$_POST["pw"])) {
-                                $_SESSION["user"]=$_POST["IGN"];
+                                $_SESSION["user"]=$_POST["tag"];
                                 myclose($link);
                                 header("Location:mainpage.php");
                                 exit();

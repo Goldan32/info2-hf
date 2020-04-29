@@ -65,11 +65,11 @@
 
                             if ($row["tag"]==NULL){
 
-                                myq($link,"INSERT INTO player (IGN,balance,email) VALUES ('".$_POST["IGN"]."',0,'".$_POST["email"]."')");
+                                myq($link,"INSERT INTO player (ign,balance,email) VALUES ('".$_POST["IGN"]."',0,'".$_POST["email"]."')");
                                 createpw($link,$_POST["IGN"],$_POST["pw"]);
                                 myclose($link);
 
-                                $_SESSION["user"]=$_POST["IGN"];
+                                $_SESSION["user"]=$_POST["tag"];
                                 header("Location:mainpage.php");
                                 exit();
                             }
