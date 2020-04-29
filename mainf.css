@@ -1,0 +1,83 @@
+body{
+    background-color: rgb(27, 40, 56);
+    font-family: Arial;
+    color: #ffffffc2;
+}
+a{
+    text-decoration: none;
+    color: #ffffffc2;
+}
+
+h1{
+    font-size:40px;
+}
+
+header{
+    background: #171a21;
+    color: #ffffffc2;
+    padding: 40px 0;
+    font-weight: 500;
+    
+}
+
+header nav a {
+	color: #ffffffc2;
+	margin-left: 15px;
+	display: inline-block;
+	padding: 10px 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size:15px;
+}
+header nav a:hover {
+	
+	color:#ffffff
+}
+
+.col-sm-2 a{
+    padding:2px;
+    margin:0;
+    display: inline-block;
+    text-decoration: none;
+    color: #ffffffc2;
+    font-size: 12px;
+    font-weight:100;
+    letter-spacing:0.5px;
+    
+    
+}
+
+.col-sm-2 a:hover{
+    color:#ffffff;
+}
+
+.form-control{
+    margin-bottom:15px;
+    
+}
+
+.form-control:focus {
+    border-color:#89ad06;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #89ad06;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #89ad06;
+}
+
+#loginfelirat {
+    margin-bottom:30px;
+}
+
+.formfelirat{
+    font-size:13px;
+}
+
+.btn-mybutton {
+    color: #ffffffc2;
+    background-color: #89ad06;
+    border-color: #89ad06;
+  }
+
+.btn-mybutton:hover {
+    color: #ffffff;
+    background-color: #adc555;
+    border-color: #adc555;
+}
