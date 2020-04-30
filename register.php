@@ -69,7 +69,7 @@
                                 createpw($link,$_POST["IGN"],$_POST["pw"]);
                                 myclose($link);
 
-                                $_SESSION["user"]=$_POST["tag"];
+                                $_SESSION["user"]=$_POST["IGN"];
                                 header("Location:mainpage.php");
                                 exit();
                             }

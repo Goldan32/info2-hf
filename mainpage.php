@@ -17,6 +17,7 @@
     <?php include 'menu.php'; ?>
     <div>
         <?php
+        
 
             //Ez azért van itt h a loginos cucc ne ragadjon be
             if(isset($_GET["signout"])) {

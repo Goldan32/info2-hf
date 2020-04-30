@@ -96,3 +96,47 @@ header nav a:hover {
 #bigname {
     margin-top:40px;
 }
+
+.fullcont{
+    background-color:#101822;
+}
+
+#bigass{
+    font-size:80px;
+}
+
+.mypic {
+    width:120px;
+    height:120px;
+    margin:10px;
+}
+
+.rightshift{
+    position: relative;
+    left:10px;
+
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+#itemtable{
+    margin-top:100px;
+}
+
+#editbutton{
+    margin-top:40px;
+    position: relative;
+    bottom:-30px;
+
+    color: #ffffffc2;
+    background-color: #89ad06;
+    border-color: #89ad06;
+    margin-bottom:15px;
+}
+
+#editbutton:hover{
+    color: #ffffff;
+    background-color: #adc555;
+    border-color: #adc555;
+    margin-bottom:15px;
+}

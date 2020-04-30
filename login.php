@@ -34,7 +34,9 @@
 
                     <?php
                         require_once("functions.php");
-                        
+                        $link=myconnect();
+                        createpw($link,"Goldan","asd123");
+                        myclose($link);
 
                         
 
@@ -48,7 +50,8 @@
                             }
                             
                             if(validatepw($link,$_POST["IGN"],$_POST["pw"])) {
-                                $_SESSION["user"]=$_POST["tag"];
+                                $_SESSION["user"]=$_POST["IGN"];
+                                
                                 myclose($link);
                                 header("Location:mainpage.php");
                                 exit();
