@@ -74,6 +74,7 @@ insert into possession (playertag,gameid,buytime,playhours)  values (3,2,'2013-1
   itemname nvarchar(30) not null,
   uname nvarchar(40),
   price float(12),
+  sell bool default true,
   foreign key (playertag) references player(tag)
   );
   
@@ -82,6 +83,7 @@ insert into possession (playertag,gameid,buytime,playhours)  values (3,2,'2013-1
   insert into item (playertag,itemname,uname,price) values (3,'Plunger',NULL,0.01);
   insert into item (playertag,itemname,uname,price) values (6,'Gut knife','stabby stabby',1200);
   insert into item (playertag,itemname,uname,price) values (6,'Zippy','wierdcar',2.00);
+  insert into item (playertag,itemname,uname,price) values (6,'Wron choice','wierdcar',3.00);
   insert into item (playertag,itemname,uname,price) values (4,'Pan','lvl3 sword',100);
   insert into item (playertag,itemname,uname,price) values (1,'dva','call the police',17.0);
   

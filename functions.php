@@ -42,14 +42,14 @@
 
         makesafe($link,$user,$pw);
         $hash=password_hash($pw,PASSWORD_DEFAULT,['cost' => 12]);
-        myq($link,"UPDATE player SET pw='$hash' WHERE IGN='$user'");
+        myq($link,"UPDATE player SET pw='$hash' WHERE ign='$user'");
 
     }
 
     function validatepw ($link,$user,$pw) {
         $correct=false;
         makesafe($link,$user,$pw);
-        $re=myq($link,"SELECT pw FROM player WHERE IGN='$user'");
+        $re=myq($link,"SELECT pw FROM player WHERE ign='$user'");
         $row=mysqli_fetch_array($re);
         $hash=$row["pw"];
         if(password_verify($pw,$hash)) {

@@ -155,3 +155,24 @@ header nav a:hover {
     background-color: #101822;
 
 }
+
+#buybutton {
+    color: #ffffffc2;
+    background-color: #377097;
+    border-color: #377097;
+}
+
+#buybutton:hover {
+    color: #ffffff;
+    background-color: #458ebe;
+    border-color: #458ebe;
+}
+
+#sellbutton {
+    color:#377097;
+    background-color:#ffffffc2;
+    border-color:#377097;
+}
+
+  
+  

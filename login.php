@@ -82,14 +82,7 @@
 
         </div>
     </div>
-
-
-
-    <div>
-        <?php
-             
-        ?>
-    </div>
+    <?php ?>
     </body>
 
 </html>

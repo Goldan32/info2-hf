@@ -57,7 +57,7 @@
             <?php
                 if($loggedin) {
                     echo "<div class=col-sm-1>
-                        <a href="."mainpage.php"."><button type=button id=editbutton name=edit class="."btn".">Edit profile</button></a>
+                        <a href="."editprofile.php?playertag=".$row["tag"].""."><button type=button id=editbutton name=edit class="."btn".">Edit profile</button></a>
                     </div>";
                 }
             ?>
@@ -86,17 +86,66 @@
                             <th>Unique name</th>
                             <th>Item type</th>
                             <th>Value</th>
+                            <?php 
+                                if($loggedin) echo "<th>Sell</th>";
+                                elseif(isset($_SESSION["user"])) echo "<th>Purchase</th>"; 
+                            ?>
                             
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                            while ($row=mysqli_fetch_array($result2)) {
+                            if(isset($_SESSION["user"])){
+                                $result3=myq($link,"SELECT balance FROM player WHERE tag='".gettag($link)."'");
+                                $money=mysqli_fetch_array($result3);
+                                $money=$money["balance"];
+                            }
+
+                            while ($row2=mysqli_fetch_array($result2)) {
+                                
                                 echo "<tr>";
-                                echo "<td>".$row["uname"]."</td>";
-                                echo "<td>".$row["itemname"]."</td>";
-                                echo "<td>".$row["price"]."</td>";
+                                echo "<td>".$row2["uname"]."</td>";
+                                echo "<td>".$row2["itemname"]."</td>";
+                                echo "<td>".$row2["price"]."</td>";
+                                if($loggedin) {
+                                    if($row2["sell"]){ $available="sellbutton"; $writing="Offering";}
+                                    else {$available="buybutton"; $writing="Sell";}
+
+                                    echo "
+                                        <form method='post' action='trade.php'>
+                                            <td style='width:100px'>
+                                                <button type='submit' name='sell' id=".$available." class='btn'>".$writing."</button>
+                                                <input type='hidden' name='formtype' value='selling'>
+                                                <input type='hidden' name='writing' value=".$writing.">
+                                                <input type='hidden' name='itemid' value=".$row2["id"].">
+                                                <input type='hidden' name='playertag' value='".$row["tag"]."'>
+                                            </td>
+                                        </form>
+                                    ";
+                                }
+                                elseif(isset($_SESSION["user"])) {
+                                    if($row2["sell"]) {
+                                        echo "
+                                        <form method=post action='trade.php'".">
+                                            <td style='width:100px'>
+                                                <button type="."submit"." name="."buy"." id="."buybutton"." class="."btn".">Buy</button>
+                                                <input type='hidden' name='money' value=".$money.">
+                                                <input type='hidden' name='ownermoney' value=".$row["balance"].">
+                                                <input type='hidden' name='price' value=".$row2["price"].">
+                                                <input type='hidden' name='itemid' value=".$row2["id"].">
+                                                <input type='hidden' name='playertag' value='".$row["tag"]."'>
+                                                <input type='hidden' name='formtype' value='buying'>
+                                            ";                                                                                                                    
+                                        echo "</td>
+                                        </form>";
+                                    }
+                                    else 
+                                    {
+                                        echo "<td></td>";
+                                    }
+                                }
                                 echo "</tr>";
+                                
                             }
                             
 
