@@ -63,28 +63,29 @@
                             $result=myq($link,"SELECT tag FROM player WHERE email='" .$_POST["email"]. "';");
                             $row=mysqli_fetch_array($result);
 
+                            $result2=myq($link,"SELECT tag FROM player WHERE ign='" .$_POST["IGN"]. "';");
+                            $row2=mysqli_fetch_array($result2);
+
                             if ($row["tag"]==NULL){
+                                if ($row2["tag"]==NULL){
 
-                                myq($link,"INSERT INTO player (ign,balance,email) VALUES ('".$_POST["IGN"]."',0,'".$_POST["email"]."')");
-                                createpw($link,$_POST["IGN"],$_POST["pw"]);
-                                myclose($link);
+                                    myq($link,"INSERT INTO player (ign,balance,email) VALUES ('".$_POST["IGN"]."',0,'".$_POST["email"]."')");
+                                    createpw($link,$_POST["IGN"],$_POST["pw"]);
+                                    myclose($link);
 
-                                $_SESSION["user"]=$_POST["IGN"];
-                                header("Location:mainpage.php");
-                                exit();
+                                    $_SESSION["user"]=$_POST["IGN"];
+                                    header("Location:mainpage.php");
+                                    exit();
+                                }
+                                else {
+                                    echo "This name is already taken.";
+                                    myclose($link);
+                                }
                             }
                             else {
                                 echo "This email is already in use.";
                                 myclose($link);
                             }
-
-                            
-
-                            
-
-
-                            
-
                         }
 
 

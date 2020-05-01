@@ -71,7 +71,7 @@
                         while($crossrow=mysqli_fetch_array($crossresult))
                             echo "<div class="."col-sm-2".">
                                     <p class="."rightshift".">".$crossrow["title"]."</p>
-                                    <a href=".""."><img class="."mypic"." src=".$crossrow["pic"]."></a>
+                                    <a href="."game.php?gameid=".$crossrow["id"].""."><img class="."mypic"." src=".$crossrow["pic"]."></a>
                                     <p class="."rightshift".">".$crossrow["hrs"]." <small>hours played</small></p>
                                 </div>";
                     ?>

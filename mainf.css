@@ -140,3 +140,18 @@ header nav a:hover {
     border-color: #adc555;
     margin-bottom:15px;
 }
+
+.panel-primary {
+    border-color: #377097;
+}
+
+.panel-primary > .panel-heading {
+    color: #ffffffc2;
+    background-color: #377097;
+    border-color: #377097;
+}
+
+.panel-primary > .panel-body {
+    background-color: #101822;
+
+}

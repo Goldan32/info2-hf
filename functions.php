@@ -67,5 +67,12 @@
 
     }
 
+    function gettag ($link) {
+        $cmd="SELECT tag FROM player WHERE ign='".$_SESSION["user"]."';";
+        $res=myq($link,$cmd);
+        $ro=mysqli_fetch_array($res);
+        return $ro["tag"];
+    }
+
 
 ?>
