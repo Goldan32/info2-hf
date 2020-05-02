@@ -51,11 +51,15 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-11" id="bigname">
+            <div class="col-sm-10" id="bigname">
                 <?php echo "<h2 id="."bigass".">".$row["ign"]."</h2>"; ?>
             </div>
             <?php
                 if($loggedin) {
+                    echo "<div class=col-sm-1>
+                        <a href="."addmoney.php?playertag=".$row["tag"].""."><button type=button id=editbutton name=edit class="."btn".">".$row["balance"]."+</button></a>
+                    </div>";
+
                     echo "<div class=col-sm-1>
                         <a href="."editprofile.php?playertag=".$row["tag"].""."><button type=button id=editbutton name=edit class="."btn".">Edit profile</button></a>
                     </div>";

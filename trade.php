@@ -13,6 +13,7 @@
 
                 if(myq($link,"UPDATE player SET balance=".$moneyminus." WHERE tag='".gettag($link)."';")) {
                     myq($link,"UPDATE player SET balance=".$moneyplus." WHERE tag='".$_POST["playertag"]."';");
+                    myq($link,"UPDATE item SET sell=false WHERE id=".$_POST["itemid"].";");
                 }
             }
         }
