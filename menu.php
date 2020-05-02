@@ -6,7 +6,7 @@
                 <nav class="col-sm-6">
                     <a href="gamelist.php">Games</a>
                     <a href="playerlist.php">Players</a>
-                    <a href="">Teams</a>
+                    <a href="teamlist.php">Teams</a>
                     
                 </nav>
                 <div class="col-sm-2">

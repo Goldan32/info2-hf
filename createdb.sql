@@ -31,11 +31,11 @@ pic text ,
 summary text not null
 );
 
-insert into game (title,score,summary,pic) values ('League of Legends',2,'This game is about...','pics/lol.jpg');
+insert into game (title,score,summary,pic) values ('League of Legends',2,'This game is about...','pics/lol.png');
 insert into game (title,score,summary,pic) values ('CS:GO',5,'This game is about...','pics/cs.png');   
-insert into game (title,score,summary,pic) values ('Rocket League',9.5,'This game is about...','pics/rl.jpg');   
+insert into game (title,score,summary,pic) values ('Rocket League',9.5,'This game is about...','pics/rl.png');   
 insert into game (title,score,summary,pic) values ('PUBG',4,'This game is about...','pics/pubg.png');   
-insert into game (title,score,summary,pic) values ('Overwatch',7.3,'This game is about...','pics/ow.jpg'); 
+insert into game (title,score,summary,pic) values ('Overwatch',7.3,'This game is about...','pics/ow.png'); 
 insert into game (title,score,summary,pic) values ('Rainbow Six: Siege',1,'This game is about...','pics/r6.png');
 
 

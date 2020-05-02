@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
        
 
-        <title> Welcome to Staem!</title>
+        <title> Player profile</title>
         <link rel="icon" href="staem.png" type="image/x-icon">
 
     </head>
@@ -78,6 +78,31 @@
 
                 </div>
 
+            </div>
+            <div class="col-sm-2">
+                <table id="itemtable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Teams</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $result4=myq($link,"SELECT * FROM teammember INNER JOIN team ON teamtag=tag WHERE playertag='".$row["tag"]."';");
+                            while ($teams=mysqli_fetch_array($result4)) {
+                                echo "
+                                    <tr>
+                                        <td><a href="."team.php?teamtag=".$teams["teamtag"]."".">".$teams["teamname"]."</a></td>
+                                        
+                                    </tr>
+                                ";
+                            }
+                        ?>
+                    
+
+                    </tbody>
+                </table>
             </div>
             <div class="col-sm-8 col-sm-offset-2">
                 <table id="itemtable" class="table table-hover">
@@ -155,6 +180,7 @@
                     </tbody>
                 </table>
             </div>
+            
         </div>
     </div>
 

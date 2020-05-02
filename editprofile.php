@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
        
 
-        <title> Welcome to Staem!</title>
+        <title> Edit your profile</title>
         <link rel="icon" href="staem.png" type="image/x-icon">
 
     </head>

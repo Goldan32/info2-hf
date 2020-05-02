@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
        
 
-        <title> Welcome to Staem!</title>
+        <title> Welcome to Staem</title>
         <link rel="icon" href="staem.png" type="image/x-icon">
 
     </head>
@@ -25,12 +25,9 @@
                 header("Location:mainpage.php");
                 exit();
 
-            }
-            
-        
-        
-            
+            }            
         ?>
     </div>
+    <h1 style='font-size:200px; text-align:center'>Welcome<br>to<br>Staem!</h1>
     </body>
 </html>

@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
        
 
-        <title> Browse Staem games</title>
+        <title> Teams on Staem</title>
         <link rel="icon" href="staem.png" type="image/x-icon">
 
     </head>
@@ -20,24 +20,21 @@
 
         $link=myconnect();
 
-        $result=myq($link,"SELECT * FROM game");
+        $result=myq($link,"SELECT * FROM team");
 
         while ($row=mysqli_fetch_array($result)) {
+
+            $result2=myq($link,"SELECT * FROM game WHERE id=".$row["gameid"].";");
+            
+            $gamerow=mysqli_fetch_array($result2);
+
             echo "
                 <div class='container'>
                     <div class='panel panel-primary' style='margin-top:40px'>
-                        <div class="."panel-heading"."><a href="."game.php?gameid=".$row["id"]."".">".$row["title"]."</a></div>
+                        <div class="."panel-heading"."><a href="."team.php?teamtag=".$row["tag"]."".">".$row["sname"]."</a></div>
                         <div class="."panel-body".">
-                            <div class="."media".">
-                                <div class="."media-left".">
-                                    <img src=".$row["pic"]." class="."media-object"." style='width:100px; height:100px'>
-                                </div>
-                                <div class="."media-body".">
-                                    <div class='col-sm-1 col-sm-offset-11'>
-                                        <h3>".$row["score"]."/10</h3>
-                                    </div>
-                                </div>
-                            </div>
+                            <h3>".$row["teamname"]."</h3>
+                            <p>Playing: ".$gamerow["title"]."</p>
                         </div>
                     </div>
                 </div>

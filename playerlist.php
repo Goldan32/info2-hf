@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
        
 
-        <title> Players</title>
+        <title> Players on Staem</title>
         <link rel="icon" href="staem.png" type="image/x-icon">
 
     </head>
