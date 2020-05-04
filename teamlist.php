@@ -13,9 +13,19 @@
 
     </head>
 
+    <?php include 'menu.php'; if(isset($_SESSION["user"])) { ?>
+
+    <div class="container">
+        <div class="col-sm-offset-5">
+            <a href="newteam.php"><button type=button name=create class="btn btn-mybutton" id='middlebutton'>Create team</button></a>
+        </div>
+    </div>
+
+    <?php } ?>
+
     <body>
     <?php 
-        include 'menu.php'; 
+         
         require_once("functions.php");
 
         $link=myconnect();

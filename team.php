@@ -28,6 +28,7 @@
         if(isset($_SESSION["user"])){
             $loggedin=true;
         }
+
     ?>
 
 

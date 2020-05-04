@@ -45,6 +45,10 @@
                     <label class="formfelirat" for="pw">Confirm current password:</label>
                     <input type="password" class="form-control" name="pw" id="pw">
                 </p>
+                <p style="margin-bottom:30px">
+                    <input type="checkbox" id="del" name="del" value="delete">
+                    <label for="del" >Delete account?</label>
+                </p>
                 <p>
                     <button type="submit" name="edit" class="btn btn-mybutton">Save changes</button>
 
@@ -57,35 +61,49 @@
 
                                 if(validatepw($link,$_SESSION["user"],$_POST["pw"])) {
 
-                                    $result=myq($link,"SELECT tag FROM player WHERE email='" .$_POST["email"]. "';");
-                                    $row=mysqli_fetch_array($result);
+                                    if (isset($_POST["del"])) {
+                                        myq($link,"DELETE FROM teammember WHERE playertag='".$tag."';");
+                                        myq($link,"DELETE FROM possession WHERE playertag='".$tag."';");
+                                        myq($link,"DELETE FROM item WHERE playertag='".$tag."';");
+                                        myq($link,"DELETE FROM player WHERE tag='".$tag."';");
 
-                                    $result2=myq($link,"SELECT tag FROM player WHERE ign='" .$_POST["IGN"]. "';");
-                                    $row2=mysqli_fetch_array($result2);
+                                        unset($_SESSION["user"]);
 
-                                    if($_POST["IGN"]!="") {
-                                        if($row2["tag"]==NULL) {
-                                            if(myq($link,"UPDATE player SET ign='".$_POST["IGN"]."' WHERE tag='".$tag."';")) {
-                                                $_SESSION["user"]=$_POST["IGN"];
+                                        header("Location:mainpage.php");
+                                        exit();
+                                    }
+                                    else {
+
+                                        $result=myq($link,"SELECT tag FROM player WHERE email='" .$_POST["email"]. "';");
+                                        $row=mysqli_fetch_array($result);
+
+                                        $result2=myq($link,"SELECT tag FROM player WHERE ign='" .$_POST["IGN"]. "';");
+                                        $row2=mysqli_fetch_array($result2);
+
+                                        if($_POST["IGN"]!="") {
+                                            if($row2["tag"]==NULL) {
+                                                if(myq($link,"UPDATE player SET ign='".$_POST["IGN"]."' WHERE tag='".$tag."';")) {
+                                                    $_SESSION["user"]=$_POST["IGN"];
+                                                }
+                                            }
+                                            else {
+                                                echo "<br>This name is already taken.";
+                                            }
+                                            
+                                        }
+
+                                        if($_POST["email"]!="") {
+                                            if ($row["tag"]==NULL){
+                                                myq($link,"UPDATE player SET email='".$_POST["email"]."' WHERE tag='".$tag."';");
+                                            }
+                                            else {
+                                                echo "<br>This email is already in use.";
                                             }
                                         }
-                                        else {
-                                            echo "<br>This name is already taken.";
-                                        }
-                                        
-                                    }
 
-                                    if($_POST["email"]!="") {
-                                        if ($row["tag"]==NULL){
-                                            myq($link,"UPDATE player SET email='".$_POST["email"]."' WHERE tag='".$tag."';");
+                                        if($_POST["npw"]!="") {
+                                            createpw($link,$_SESSION["user"],$_POST["npw"]);
                                         }
-                                        else {
-                                            echo "<br>This email is already in use.";
-                                        }
-                                    }
-
-                                    if($_POST["npw"]!="") {
-                                        createpw($link,$_SESSION["user"],$_POST["npw"]);
                                     }
                                     
                                 }

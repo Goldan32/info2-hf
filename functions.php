@@ -7,9 +7,10 @@
         $db_password="";
         $db_name="staem";
 
-        $link=mysqli_connect($db_server,$db_user,$db_password,$db_name) or die("Nem tudok csatlakozni az adatbázishoz.");
+        $link=mysqli_connect($db_server,$db_user,$db_password,$db_name) or die("Can't connect to database.");
         mysqli_query ($link, "set character_set_results='utf8'");
         mysqli_query ($link, "set character_set_client='utf8'");
+        mysqli_query ($link, "use '".$db_name."';");
 
         return $link;
     }
