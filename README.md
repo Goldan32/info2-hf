@@ -1,5 +1,7 @@
 # info2-hf
 The purpose of this project is passing a class, and practicing, nothing else!
+All similarities to real life are coincidences.
+I do not own any of the pictures used.
 
 Technologies, and programs used:
 * __HTML__ and __CSS__ to sty the pages, editor: __VSCode__.
@@ -19,7 +21,7 @@ How to use:
 Here is a complete list of the features in this application:
 * A complete account system with login and registration. Some features are only visible/available when logged in.
 * The three links in the header
-  * Games: A list of all games available.
+  * Games: A list of all games available. Also here is the option to create a team.
   * Players: A searchable list of all the players.
   * Teams: A list of all the teams.  
 * Player profiles
@@ -27,7 +29,7 @@ Here is a complete list of the features in this application:
   * List of teams (as links) the player is part of.
   * The player's items listed. 
   * When logged in: can offer his own items, or buy other's when looking at their profile.
-  * When logged in: can edit profile.
+  * When logged in: can edit and delete profile.
   * When logged in: display current balance, option to add more.
 * Viewing a single game
   * Displaying the summary, rating and logo of the game.
@@ -35,6 +37,7 @@ Here is a complete list of the features in this application:
 * Viewing a team
   * List of team members
   * When logged in: Option to join, or if already member, leave team.
+  * When the last player leaves the team, it ceases to exist
 
 
 
