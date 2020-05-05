@@ -19,6 +19,8 @@
 
         require_once("functions.php");
         $link=myconnect();
+
+        // tag valtozó tartalmazza az épp bejelentkezett felhasználó tag-jét
         $tag=gettag($link);
 
 
@@ -55,12 +57,13 @@
                     <?php
                         
 
-                        if($_GET["playertag"]=$tag) {
+                         
                             if(isset($_POST["edit"])) {
                                 makesafe($link,$_POST["IGN"],$_POST["email"],$_POST["npw"],$_POST["pw"]);
 
                                 if(validatepw($link,$_SESSION["user"],$_POST["pw"])) {
 
+                                    //Profil törlése
                                     if (isset($_POST["del"])) {
                                         myq($link,"DELETE FROM teammember WHERE playertag='".$tag."';");
                                         myq($link,"DELETE FROM possession WHERE playertag='".$tag."';");
@@ -69,10 +72,13 @@
 
                                         unset($_SESSION["user"]);
 
+                                        //Törlés után vissza a kezdőoldalra
                                         header("Location:mainpage.php");
                                         exit();
                                     }
                                     else {
+                                        //Csak azokat a mezőket dolgozzuk fel, amiket kitöltöttek
+                                        //email és név esetében megnézzük, hogy szerepel-e az adatbázisban
 
                                         $result=myq($link,"SELECT tag FROM player WHERE email='" .$_POST["email"]. "';");
                                         $row=mysqli_fetch_array($result);
@@ -80,6 +86,7 @@
                                         $result2=myq($link,"SELECT tag FROM player WHERE ign='" .$_POST["IGN"]. "';");
                                         $row2=mysqli_fetch_array($result2);
 
+                                        //Új név
                                         if($_POST["IGN"]!="") {
                                             if($row2["tag"]==NULL) {
                                                 if(myq($link,"UPDATE player SET ign='".$_POST["IGN"]."' WHERE tag='".$tag."';")) {
@@ -92,6 +99,7 @@
                                             
                                         }
 
+                                        //Új email
                                         if($_POST["email"]!="") {
                                             if ($row["tag"]==NULL){
                                                 myq($link,"UPDATE player SET email='".$_POST["email"]."' WHERE tag='".$tag."';");
@@ -101,9 +109,14 @@
                                             }
                                         }
 
+                                        //Új jelszó
                                         if($_POST["npw"]!="") {
                                             createpw($link,$_SESSION["user"],$_POST["npw"]);
                                         }
+                                        myfree($result);
+                                        myfree($result2);
+
+                                        header("Location:profile.php?playertag=".$tag);
                                     }
                                     
                                 }
@@ -113,7 +126,7 @@
 
                             }
 
-                        }
+                        
                         
 
                         

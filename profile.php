@@ -26,7 +26,7 @@
         $result=myq($link,"SELECT * FROM player WHERE tag='".$_GET["playertag"]."';");
         $row=mysqli_fetch_array($result);
 
-        
+        //Be van-e jelentkezve az akinek a profilján vagyunk
         $loggedin=false;
        
         
@@ -42,6 +42,7 @@
             $loggedin=false;
         }
 
+        //Megkeressük melyik játékok vannak meg a játékosnak akinek a profilján vagyunk
         $crossresult=myq($link,"SELECT game.title AS title, game.id AS id, game.pic AS pic, possession.playhours AS hrs
              FROM possession INNER JOIN game ON game.id=possession.gameid WHERE possession.playertag='".$_GET["playertag"]."' ORDER BY possession.playhours DESC;");
 
@@ -55,9 +56,10 @@
                 <?php echo "<h2 id="."bigass".">".$row["ign"]."</h2>"; ?>
             </div>
             <?php
+                //Ha be van jelentkezve, és a saját profilját nézi, akkor megjelenik a pénz, és szerkesztés gomb
                 if($loggedin) {
                     echo "<div class=col-sm-1>
-                        <a href="."addmoney.php?playertag=".$row["tag"].""."><button type=button id=editbutton name=edit class="."btn".">".$row["balance"]."+</button></a>
+                        <a href="."addmoney.php><button type=button id=editbutton name=edit class="."btn".">".$row["balance"]."+</button></a>
                     </div>";
 
                     echo "<div class=col-sm-1>
@@ -71,7 +73,7 @@
             <div class="row">
                 <div class="container fullcont">
                     <?php
-
+                        //Játékok kiírása képekkel együtt
                         while($crossrow=mysqli_fetch_array($crossresult))
                             echo "<div class="."col-sm-2".">
                                     <p class="."rightshift".">".$crossrow["title"]."</p>
@@ -93,6 +95,7 @@
                     </thead>
                     <tbody>
                         <?php
+                            //Csapatok kiírása amikben szerepel a játékos
                             $result4=myq($link,"SELECT * FROM teammember INNER JOIN team ON teamtag=tag WHERE playertag='".$row["tag"]."';");
                             while ($teams=mysqli_fetch_array($result4)) {
                                 echo "
@@ -124,12 +127,17 @@
                     </thead>
                     <tbody>
                         <?php
+                            //Játékos tárgyainak kilistázása
+
+                            //Pénz lekérdezése
                             if(isset($_SESSION["user"])){
                                 $result3=myq($link,"SELECT balance FROM player WHERE tag='".gettag($link)."'");
                                 $money=mysqli_fetch_array($result3);
                                 $money=$money["balance"];
                             }
 
+                            //Sok hidden value-val küldjük át az adatokat egy másik php oldalnak ami a műveleteket elvégzi, majd visszatér ide
+                            //Kb. egy toggle button jelenik meg minden sorban (bárcsak tanultam volna js-et)
                             while ($row2=mysqli_fetch_array($result2)) {
                                 
                                 echo "<tr>";

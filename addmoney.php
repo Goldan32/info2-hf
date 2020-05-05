@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
        
 
-        <title> Edit your profile</title>
+        <title> Add currency</title>
         <link rel="icon" href="staem.png" type="image/x-icon">
 
     </head>
@@ -19,6 +19,8 @@
 
         require_once("functions.php");
         $link=myconnect();
+
+        // tag valtozó tartalmazza az épp bejelentkezett felhasználó tag-jét
         $tag=gettag($link);
 
 
@@ -28,7 +30,7 @@
            
             <div class="col-sm-offset-4 col-sm-4">
                 <h2 id="loginfelirat"> Add currency to your account. </h1>
-                <form action="addmoney.php?playertag="<?php echo $tag; ?> method="post">
+                <form action="addmoney.php" method="post">
                 <p>
                     <label class="formfelirat" for="sum">This amount will be added to your account:</label>
                     <input type="text" class="form-control" name="sum" id="sum">
@@ -38,21 +40,26 @@
                     <input type="password" class="form-control" name="pw" id="pw">
                 </p>
                 <p>
-                    <button type="submit" name="pay" class="btn btn-mybutton">Pay</button>
+                    <button type="submit" name="pay" id="pay" class="btn btn-mybutton">Pay</button>
 
                     <?php
                         $result=myq($link,"SELECT balance from player WHERE tag=".$tag.";");
                         $mon=mysqli_fetch_array($result);
                         $mon=$mon["balance"];
 
-                        if($_GET["playertag"]=$tag) {
+                        
+
+                        //Akkor nem egyezik, ha nem a gombbal került ide valaki
+                         
+                            
                             if(isset($_POST["pay"])) {
                                 makesafe($link,$_POST["sum"],$_POST["pw"]);
-
                                 $mon=$mon+$_POST["sum"];
 
-                                if(validatepw($link,$_SESSION["user"],$_POST["pw"])) {
+                                
 
+                                if(validatepw($link,$_SESSION["user"],$_POST["pw"])) {
+                                    //Ha üres, vagy nem számot adtak meg, akkor nem hajtjuk végre
                                     if($_POST["sum"]=="" or !is_numeric($_POST["sum"])) {
                                         
                                         echo "<br>Give a number!";
@@ -61,8 +68,11 @@
                                         echo "<br>We appreciate, but try adding a positive number to your balance.";
                                     }
                                     else{
+                                        //Pénz hozzáadása
                                         myq($link,"UPDATE player SET balance=".$mon." WHERE tag=".$tag.";");
                                         echo "<br> Payment succesful!";
+
+                                        //Vissza gomb
                                         echo "<p style='margin-top:5px'><a href='profile.php?playertag=".$tag."' style='text-decoration:underline'><br>Back to profile</a></p>";
                                     }
 
@@ -77,12 +87,14 @@
 
                             }
 
-                        }
+
+
+                        
                         
 
                         
-
-
+                        
+                        
                             
                     ?>
 

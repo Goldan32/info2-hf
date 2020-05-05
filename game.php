@@ -24,10 +24,13 @@
         $gamerow=mysqli_fetch_array($result);
         
         
-
+        //Be van-e valaki jelentkezve
         $loggedin=false;
+
+        //Megvan-e a bejelentkezett felhasználónak a játék amit nézünk
         $havegame=false;
         
+        //Ezek beállítása
         if(isset($_SESSION["user"])) {
             $loggedin=true;
 
@@ -37,6 +40,8 @@
             if($row2["id"]!=NULL){
                 $havegame=true;
             }
+
+            myfree($result2);
         }
         else {
             $loggedin=false;
@@ -64,6 +69,8 @@
                     <p>This game recieved a rating of <?php echo $gamerow["score"]?> out of 10.</p>
                     <div>
                         <?php
+
+                            //Csak akkor jelenik meg a hozzáadás opció ha be van jelentkezve és nincs meg neki a játék
                             if($loggedin){
                                 if (!$havegame) {
                                     echo "
@@ -73,6 +80,7 @@
                                         </p>
                                     </form>";
 
+                                    //Játék hozzáadása a játékoshoz
                                     if(isset($_POST["add"])){
                                         myq($link,"INSERT INTO possession (playertag,gameid,buytime,playhours) VALUES (".gettag($link).",".$gamerow["id"].",NOW(),0)");
                                         header("Location:game.php?gameid=".$gamerow["id"]);

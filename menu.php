@@ -14,6 +14,8 @@
                         require_once("functions.php");
                         $link=myconnect();
                         session_start();
+
+                        //Mást kell mutatni attól függően, hogy be van-e jelentkezve valaki
                         if (!isset($_SESSION["user"])) {
 
                             echo " <a href="."login.php".">login</a>

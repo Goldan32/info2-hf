@@ -48,6 +48,7 @@
 
                             $link=myconnect();
 
+                            //Ki kell tölteni a mezőket
                             if (empty($_POST["IGN"]) or empty($_POST["pw"]) or empty($_POST["email"]) or empty($_POST["pwa"])) {
                                 echo "<br>Every field must be filled!";
                                 return false;
@@ -60,6 +61,7 @@
 
                             makesafe($link,$_POST["IGN"],$_POST["email"],$_POST["pw"],$_POST["pwa"]);
 
+                            //ellenőrizzük, hogy van-e már ilyen név vagy email, ha igen akkor szólunk
                             $result=myq($link,"SELECT tag FROM player WHERE email='" .$_POST["email"]. "';");
                             $row=mysqli_fetch_array($result);
 
@@ -69,6 +71,7 @@
                             if ($row["tag"]==NULL){
                                 if ($row2["tag"]==NULL){
 
+                                    //Egyébként hozzáadjuk az új játékost, és be is jelentkeztetjük
                                     myq($link,"INSERT INTO player (ign,balance,email) VALUES ('".$_POST["IGN"]."',0,'".$_POST["email"]."')");
                                     createpw($link,$_POST["IGN"],$_POST["pw"]);
                                     myclose($link);

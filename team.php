@@ -20,6 +20,7 @@
         $link=myconnect();
         $loggedin=false;
 
+        //Lekérdezzük az infókat a csapatról, és a tagokat
         $result=myq($link,"SELECT * FROM team WHERE tag=".$_GET["teamtag"].";");
         $row=mysqli_fetch_array($result);
 
@@ -74,7 +75,7 @@
                 </table>
             </div>
             <div class="col-sm-4 col-sm-offset-1" style='margin-top:150px'>
-                <?php if ($loggedin and (!$inteam)) {?>
+                <?php if ($loggedin and (!$inteam))  { //Hehe az utolsó oldal kódolásánál... ?>
                     <form action='join.php' method='post'>
                         <p>
                             <label class="formfelirat" for="pos">Your position:</label>
@@ -95,7 +96,7 @@
                         </p>
                     </form>
 
-                <?php } ?>
+                <?php } //...rájöttem, hogy ezt is lehet :D ?>
                         
             </div>
             

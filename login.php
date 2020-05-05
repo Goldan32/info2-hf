@@ -35,7 +35,10 @@
                     <?php
                         require_once("functions.php");
                         $link=myconnect();
+                        //Teszteléshez értékek
                         createpw($link,"Goldan","asd123");
+                        createpw($link,"Randotron","asd123");
+                        createpw($link,"Pocok","asd123");
                         myclose($link);
 
                         

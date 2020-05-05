@@ -3,6 +3,7 @@
     session_start();
     $link=myconnect();
 
+    //A játékos belép a csapatba
     if($_POST["func"]=="join"){
         
         makesafe($link,$_POST["pos"]);
@@ -14,6 +15,7 @@
         exit();
     }
 
+    //Játékos kilép a csapatból
     if($_POST["func"]=="leave"){
         myq($link,"DELETE FROM teammember WHERE playertag=".gettag($link)." AND teamtag=".$_POST["teamtag"].";");
 

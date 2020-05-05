@@ -62,15 +62,21 @@
 
                     <?php
                         if(isset($_POST["create"]) and isset($_SESSION["user"])) {
+
+                            //Három betűs a rövidítés
                             if (strlen($_POST["short"])==3){
 
                                 makesafe($link,$_POST["teamname"],$_POST["short"],$_POST["pos"]);
+
+                                //gameid megszerzése
                                 $result2=myq($link,"SELECT id FROM game WHERE title='".$_POST["game"]."';");
                                 $gameid=mysqli_fetch_array($result2);
                                 $gameid=$gameid["id"];
 
+                                //új csapat létrehozása
                                 myq($link,"INSERT INTO team (gameid,teamname,sname) VALUES (".$gameid.",'".$_POST["teamname"]."','".$_POST["short"]."')");
 
+                                //Készítő hozzáadása a csapathoz
                                 $result3=myq($link,"SELECT LAST_INSERT_ID() AS recent FROM team");
                                 $teamtag=mysqli_fetch_array($result3);
 
@@ -83,7 +89,8 @@
                             }
                         }
 
-                            
+                        myfree($result);  
+                        myclose($link);
                     ?>
 
                 </p>

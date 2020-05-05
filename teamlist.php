@@ -13,7 +13,7 @@
 
     </head>
 
-    <?php include 'menu.php'; if(isset($_SESSION["user"])) { ?>
+    <?php include 'menu.php'; if(isset($_SESSION["user"])) { //új csapat létrehozása gomb?>
 
     <div class="container">
         <div class="col-sm-offset-5">
@@ -25,7 +25,7 @@
 
     <body>
     <?php 
-         
+         //Csapatok kilistázása
         require_once("functions.php");
 
         $link=myconnect();

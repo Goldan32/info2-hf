@@ -36,6 +36,7 @@
                         <button type="submit" class="btn btn-mybutton">Search</button>
 
                         <?php
+                            //Keresés megvalósítása
                             if(isset($_GET["search"])){
                                 makesafe($link,$_GET["search"]);
                                 $cmd="SELECT tag,ign,email FROM player WHERE 

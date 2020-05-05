@@ -19,7 +19,7 @@
         <?php
         
 
-            //Ez azért van itt h a loginos cucc ne ragadjon be
+            //Kijelentkezés végrehajtása
             if(isset($_GET["signout"])) {
                 unset($_SESSION["user"]);
                 header("Location:mainpage.php");
@@ -28,6 +28,7 @@
             }            
         ?>
     </div>
+    <!-- Nem volt jobb ötletem bocsi -->
     <h1 style='font-size:200px; text-align:center'>Welcome<br>to<br>Staem!</h1>
     </body>
 </html>
